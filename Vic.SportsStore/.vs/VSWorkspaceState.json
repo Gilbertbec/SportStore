@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Vic.SportsStore.Domain\\Concrete",
+    "\\Vic.SportsStore.UnitTests",
+    "\\Vic.SportStore.WebApp\\App_Start",
+    "\\Vic.SportStore.WebApp\\Concrete",
+    "\\Vic.SportStore.WebApp\\Views"
+  ],
+  "SelectedNode": "\\Vic.SportsStore.UnitTests\\UnitTest1.cs",
+  "PreviewInSolutionExplorer": false
+}
