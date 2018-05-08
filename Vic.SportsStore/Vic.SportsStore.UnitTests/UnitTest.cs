@@ -1,50 +1,20 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Vic.SportsStore.Domain.Concrete;
-using Vic.SportsStore.WebApp.Controllers;
-using System.Collections.Generic;
-using Vic.SportsStore.Domain.Entities;
-using System.Linq;
-using Moq;
-using Vic.SportsStore.Domain.Abstract;
-using System.Web.Mvc;
-using Vic.SportsStore.WebApp.Models;
-using Vic.SportsStore.WebApp.HtmlHelpers;
-
-namespace Vic.SportsStore.UnitTests
+﻿namespace Vic.SportsStore.UnitTests
 {
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Moq;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web.Mvc;
+    using Vic.SportsStore.Domain.Abstract;
+    using Vic.SportsStore.Domain.Entities;
+    using Vic.SportsStore.WebApp.Controllers;
+    using Vic.SportsStore.WebApp.HtmlHelpers;
+    using Vic.SportsStore.WebApp.Models;
+
     [TestClass]
-    public class UnitTest1
+    public class UnitTest
     {
-        //[TestMethod]
-        //public void TestMethod1()
-        //{
-        //}
-
-//        [TestMethod]
-//        public void Can_Paginate()
-//        {
-//            // Arrange
-//            Mock<IProductsRepository> mock = new Mock<IProductsRepository>();
-//            mock.Setup(m => m.Products).Returns(new Product[] {
-//new Product {ProductID = 1, Name = "P1"},
-//new Product {ProductID = 2, Name = "P2"},
-//new Product {ProductID = 3, Name = "P3"},
-//new Product {ProductID = 4, Name = "P4"},
-//new Product {ProductID = 5, Name = "P5"}
-//});
-//            ProductController controller = new ProductController(mock.Object);
-//            controller.PageSize = 3;
-//            // Act
-//            var result = (IEnumerable<Product>)controller.List(2).Model;
-//            // Assert
-//            Product[] prodArray = result.ToArray();
-//            Assert.IsTrue(prodArray.Length == 2);
-//            Assert.AreEqual(prodArray[0].Name, "P4");
-//            Assert.AreEqual(prodArray[1].Name, "P5");
-//        }
-
-
         [TestMethod]
         public void Can_Generate_Page_Links()
         {
@@ -69,29 +39,6 @@ namespace Vic.SportsStore.UnitTests
             result.ToString());
         }
 
-//        [TestMethod]
-//        public void Can_Paginate()
-//        {
-//            // Arrange
-//            Mock<IProductsRepository> mock = new Mock<IProductsRepository>();
-//            mock.Setup(m => m.Products).Returns(new Product[] {
-//new Product {ProductID = 1, Name = "P1"},
-//new Product {ProductID = 2, Name = "P2"},
-//new Product {ProductID = 3, Name = "P3"},
-//new Product {ProductID = 4, Name = "P4"},
-//new Product {ProductID = 5, Name = "P5"}
-//});
-//            ProductController controller = new ProductController(mock.Object);
-//            controller.PageSize = 3;
-//            // Act
-//            var result = (ProductsListViewModel)controller.List(2).Model;
-//            // Assert
-//            Product[] prodArray = result.Products.ToArray();
-//            Assert.IsTrue(prodArray.Length == 2);
-//            Assert.AreEqual(prodArray[0].Name, "P4");
-//            Assert.AreEqual(prodArray[1].Name, "P5");
-//        }
-
         [TestMethod]
         public void Can_Send_Pagination_View_Model()
         {
@@ -99,11 +46,11 @@ namespace Vic.SportsStore.UnitTests
             Mock<IProductsRepository> mock = new Mock<IProductsRepository>();
             mock.Setup(m => m.Products).Returns(new Product[]
             {
-new Product {ProductID = 1, Name = "P1"},
-new Product {ProductID = 2, Name = "P2"},
-new Product {ProductID = 3, Name = "P3"},
-new Product {ProductID = 4, Name = "P4"},
-new Product {ProductID = 5, Name = "P5"}
+                new Product {ProductID = 1, Name = "P1"},
+                new Product {ProductID = 2, Name = "P2"},
+                new Product {ProductID = 3, Name = "P3"},
+                new Product {ProductID = 4, Name = "P4"},
+                new Product {ProductID = 5, Name = "P5"}
             });
             // Arrange
             ProductController controller = new ProductController(mock.Object);
@@ -126,10 +73,10 @@ new Product {ProductID = 5, Name = "P5"}
             Mock<IProductsRepository> mock = new Mock<IProductsRepository>();
             mock.Setup(m => m.Products).Returns(new Product[]
             {
-new Product {ProductID = 1, Name = "P1", Category = "Apples"},
-new Product {ProductID = 2, Name = "P2", Category = "Apples"},
-new Product {ProductID = 3, Name = "P3", Category = "Plums"},
-new Product {ProductID = 4, Name = "P4", Category = "Oranges"},
+                new Product {ProductID = 1, Name = "P1", Category = "Apples"},
+                new Product {ProductID = 2, Name = "P2", Category = "Apples"},
+                new Product {ProductID = 3, Name = "P3", Category = "Plums"},
+                new Product {ProductID = 4, Name = "P4", Category = "Oranges"},
             });
             // Arrange - create the controller
             NavController target = new NavController(mock.Object);
@@ -150,8 +97,8 @@ new Product {ProductID = 4, Name = "P4", Category = "Oranges"},
             Mock<IProductsRepository> mock = new Mock<IProductsRepository>();
             mock.Setup(m => m.Products).Returns(new Product[]
             {
-new Product {ProductID = 1, Name = "P1", Category = "Apples"},
-new Product {ProductID = 4, Name = "P2", Category = "Oranges"},
+                new Product {ProductID = 1, Name = "P1", Category = "Apples"},
+                new Product {ProductID = 4, Name = "P2", Category = "Oranges"},
             });
             // Arrange - create the controller
             NavController target = new NavController(mock.Object);
@@ -171,11 +118,11 @@ new Product {ProductID = 4, Name = "P2", Category = "Oranges"},
             Mock<IProductsRepository> mock = new Mock<IProductsRepository>();
             mock.Setup(m => m.Products).Returns(new Product[]
             {
-new Product {ProductID = 1, Name = "P1", Category = "Cat1"},
-new Product {ProductID = 2, Name = "P2", Category = "Cat2"},
-new Product {ProductID = 3, Name = "P3", Category = "Cat1"},
-new Product {ProductID = 4, Name = "P4", Category = "Cat2"},
-new Product {ProductID = 5, Name = "P5", Category = "Cat3"}
+                new Product {ProductID = 1, Name = "P1", Category = "Cat1"},
+                new Product {ProductID = 2, Name = "P2", Category = "Cat2"},
+                new Product {ProductID = 3, Name = "P3", Category = "Cat1"},
+                new Product {ProductID = 4, Name = "P4", Category = "Cat2"},
+                new Product {ProductID = 5, Name = "P5", Category = "Cat3"}
             });
             // Arrange - create a controller and make the page size 3 items
             ProductController target = new ProductController(mock.Object);
@@ -191,7 +138,5 @@ new Product {ProductID = 5, Name = "P5", Category = "Cat3"}
             Assert.AreEqual(res3, 1);
             Assert.AreEqual(resAll, 5);
         }
-
     }
-
 }

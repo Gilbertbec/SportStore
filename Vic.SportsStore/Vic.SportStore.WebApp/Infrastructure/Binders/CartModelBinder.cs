@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Vic.SportsStore.Domain.Entities;
-
-namespace Vic.SportsStore.WebApp.Infrastructure.Binders
+﻿namespace Vic.SportsStore.WebApp.Infrastructure.Binders
 {
+    using System.Web.Mvc;
+    using Vic.SportsStore.Domain.Entities;
+
     public class CartModelBinder : IModelBinder
     {
         private const string sessionKey = "Cart";
+
         public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
             // get the Cart from the session

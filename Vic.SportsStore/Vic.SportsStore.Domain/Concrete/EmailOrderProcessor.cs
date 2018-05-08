@@ -1,36 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
-using Vic.SportsStore.Domain.Abstract;
-using Vic.SportsStore.Domain.Entities;
-
-namespace Vic.SportsStore.Domain.Concrete
+﻿namespace Vic.SportsStore.Domain.Concrete
 {
+    using System.IO;
+    using System.Net;
+    using System.Net.Mail;
+    using System.Text;
+    using Vic.SportsStore.Domain.Abstract;
+    using Vic.SportsStore.Domain.Entities;
+
     public class EmailSettings
     {
         public string MailToAddress = "orders@example.com";
+
         public string MailFromAddress = "sportsstore@example.com";
+
         public bool UseSsl = true;
+
         public string Username = "MySmtpUsername";
+
         public string Password = "MySmtpPassword";
+
         public string ServerName = "smtp.example.com";
+
         public int ServerPort = 587;
+
         public bool WriteAsFile = true;
+
         public string FileLocation = @"d:\sports_store_emails";
     }
 
     public class EmailOrderProcessor : IOrderProcessor
     {
         private EmailSettings emailSettings;
+
         public EmailOrderProcessor(EmailSettings settings)
         {
             emailSettings = settings;
         }
+
         public void ProcessOrder(Cart cart, ShippingDetails shippingInfo)
         {
             using (var smtpClient = new SmtpClient())

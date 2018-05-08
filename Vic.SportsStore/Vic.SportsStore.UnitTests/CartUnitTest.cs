@@ -1,18 +1,14 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Vic.SportsStore.Domain.Concrete;
-using Vic.SportsStore.WebApp.Controllers;
-using System.Collections.Generic;
-using Vic.SportsStore.Domain.Entities;
-using System.Linq;
-using Moq;
-using Vic.SportsStore.Domain.Abstract;
-using System.Web.Mvc;
-using Vic.SportsStore.WebApp.Models;
-using Vic.SportsStore.WebApp.HtmlHelpers;
-
-namespace Vic.SportsStore.UnitTests
+﻿namespace Vic.SportsStore.UnitTests
 {
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Moq;
+    using System.Linq;
+    using System.Web.Mvc;
+    using Vic.SportsStore.Domain.Abstract;
+    using Vic.SportsStore.Domain.Entities;
+    using Vic.SportsStore.WebApp.Controllers;
+    using Vic.SportsStore.WebApp.Models;
+
     [TestClass]
     public class CartTests
     {
@@ -34,7 +30,6 @@ namespace Vic.SportsStore.UnitTests
             Assert.AreEqual(results[1].Product, p2);
         }
 
-
         [TestMethod]
         public void Can_Add_Quantity_For_Existing_Lines()
         {
@@ -53,7 +48,6 @@ namespace Vic.SportsStore.UnitTests
             Assert.AreEqual(results[0].Quantity, 11);
             Assert.AreEqual(results[1].Quantity, 1);
         }
-
 
         [TestMethod]
         public void Calculate_Cart_Total()
@@ -89,8 +83,6 @@ namespace Vic.SportsStore.UnitTests
             Assert.AreEqual(target.Lines.Count(), 0);
         }
 
-
-
         [TestMethod]
         public void Can_Add_To_Cart()
         {
@@ -98,7 +90,7 @@ namespace Vic.SportsStore.UnitTests
             Mock<IProductsRepository> mock = new Mock<IProductsRepository>();
             mock.Setup(m => m.Products).Returns(new Product[]
             {
-new Product {ProductID = 1, Name = "P1", Category = "Apples"},
+                new Product {ProductID = 1, Name = "P1", Category = "Apples"},
             }.AsQueryable());
             // Arrange - create a Cart
             Cart cart = new Cart();
@@ -110,6 +102,7 @@ new Product {ProductID = 1, Name = "P1", Category = "Apples"},
             Assert.AreEqual(cart.Lines.Count(), 1);
             Assert.AreEqual(cart.Lines.ToArray()[0].Product.ProductID, 1);
         }
+
         [TestMethod]
         public void Adding_Product_To_Cart_Goes_To_Cart_Screen()
         {
@@ -117,7 +110,7 @@ new Product {ProductID = 1, Name = "P1", Category = "Apples"},
             Mock<IProductsRepository> mock = new Mock<IProductsRepository>();
             mock.Setup(m => m.Products).Returns(new Product[]
             {
-new Product {ProductID = 1, Name = "P1", Category = "Apples"},
+                new Product {ProductID = 1, Name = "P1", Category = "Apples"},
             }.AsQueryable());
             // Arrange - create a Cart
             Cart cart = new Cart();
@@ -129,6 +122,7 @@ new Product {ProductID = 1, Name = "P1", Category = "Apples"},
             Assert.AreEqual(result.RouteValues["action"], "Index");
             Assert.AreEqual(result.RouteValues["returnUrl"], "myUrl");
         }
+
         [TestMethod]
         public void Can_View_Cart_Contents()
         {
@@ -143,6 +137,4 @@ new Product {ProductID = 1, Name = "P1", Category = "Apples"},
             Assert.AreEqual(result.ReturnUrl, "myUrl");
         }
     }
-
-
 }

@@ -1,24 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Vic.SportsStore.WebApp.Abstract;
-using Vic.SportsStore.WebApp.Models;
-
-namespace Vic.SportsStore.WebApp.Controllers
+﻿namespace Vic.SportsStore.WebApp.Controllers
 {
+    using System.Web.Mvc;
+    using Vic.SportsStore.WebApp.Abstract;
+    using Vic.SportsStore.WebApp.Models;
+
     public class AccountController : Controller
     {
         IAuthProvider authProvider;
+
         public AccountController(IAuthProvider auth)
         {
             authProvider = auth;
         }
+
         public ViewResult Login()
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Login(LoginViewModel model, string returnUrl)
         {
